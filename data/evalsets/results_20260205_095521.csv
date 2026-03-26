@@ -1,0 +1,10 @@
+id,category,question,answer,refused,latency_seconds,keyword_hit_rate,citation_ok,refusal_correct,error
+J1,answerable,List two signature juices mentioned in the Joe & the Juice menu.,"Two signature juices mentioned in the Joe & the Juice menu are:
+
+1. Feel Good (Carrot, Turmeric, Ginger, Lemon, Apple, Olive Oil, Ice) - £9.00 (Source: Joe & the Juice.pdf, p.0)
+2. JOEs Green Mile (Spinach, Kiwi, Avocado, Lemon, Apple, Ice) - £9.00 (Source: Joe & the Juice.pdf, p.0)",False,3.991,0.5,True,True,
+J2,answerable,What ingredients are listed for the 'Feel Good' juice?,No relevant content found in your uploads for that question. Try rephrasing or upload a more specific document.,True,0.417,0.0,True,False,
+I1,answerable,Who is the Module and Course Leader for the IoT lecture?,"The Module and Course Leader for the IoT lecture is Stavros Dimitriou (Source: 01 Introduction to IoT.pdf, p.0).",False,1.642,1.0,True,True,
+I2,answerable,"How many devices are connected on the Internet by 2023, according to the IoT lecture?","According to the IoT lecture, there are estimated to be over 30 billion devices connected to the Internet by 2023 (Source: 01 Introduction to IoT.pdf, p.4).",False,4.084,1.0,True,True,
+R1,should_refuse,What year was Joe & the Juice founded?,I could not find this information in the uploaded PDFs.,True,2.258,0.0,True,True,
+R2,should_refuse,What is the capital of France?,I could not find this information in the uploaded PDFs.,True,1.217,0.0,True,True,

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "J1",
+    "category": "answerable",
+    "question": "List two signature juices mentioned in the Joe & the Juice menu.",
+    "expected_keywords": [
+      "Beets",
+      "Berries",
+      "Feel",
+      "Good"
+    ],
+    "min_citations": 1
+  },
+  {
+    "id": "J2",
+    "category": "answerable",
+    "question": "What ingredients are listed for the 'Feel Good' juice?",
+    "expected_keywords": [
+      "carrot",
+      "turmeric",
+      "ginger"
+    ],
+    "min_citations": 1
+  },
+  {
+    "id": "I1",
+    "category": "answerable",
+    "question": "Who is the Module and Course Leader for the IoT lecture?",
+    "expected_keywords": [
+      "Stavros",
+      "Dimitriou"
+    ],
+    "min_citations": 1
+  },
+  {
+    "id": "I2",
+    "category": "answerable",
+    "question": "How many devices are connected on the Internet by 2023, according to the IoT lecture?",
+    "expected_keywords": [
+      "30",
+      "billion",
+      "devices"
+    ],
+    "min_citations": 1
+  },
+  {
+    "id": "R1",
+    "category": "should_refuse",
+    "question": "What year was Joe & the Juice founded?",
+    "should_refuse": true
+  },
+  {
+    "id": "R2",
+    "category": "should_refuse",
+    "question": "What is the capital of France?",
+    "should_refuse": true
+  }
+]

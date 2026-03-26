@@ -1,0 +1,397 @@
+{
+  "meta": {
+    "timestamp": "20260210_161050",
+    "model": "gpt-4o-mini",
+    "retriever_k": 5,
+    "chunk_size": 900,
+    "chunk_overlap": 150,
+    "max_distance": 0.85,
+    "judge_enabled": false,
+    "timeout_s": 60,
+    "evalset_path": "/Users/kwasitarawally/Desktop/kwasis-rag/data/evalsets/evalset.json"
+  },
+  "summary": {
+    "n": 6,
+    "refusal_accuracy": 0.833,
+    "citation_coverage_rate": 1.0,
+    "avg_keyword_hit_rate": 0.25,
+    "median_latency": 2.545,
+    "p95_latency": 7.963
+  },
+  "by_category": [
+    {
+      "category": "answerable",
+      "n": 4,
+      "refusal_accuracy": 0.75,
+      "citation_coverage_rate": 1.0,
+      "avg_keyword_hit_rate": 0.375,
+      "median_latency": 2.515
+    },
+    {
+      "category": "should_refuse",
+      "n": 2,
+      "refusal_accuracy": 1.0,
+      "citation_coverage_rate": 1.0,
+      "avg_keyword_hit_rate": 0.0,
+      "median_latency": 2.603
+    }
+  ],
+  "items": [
+    {
+      "id": "J1",
+      "category": "answerable",
+      "question": "List two signature juices mentioned in the Joe & the Juice menu.",
+      "answer": "Two signature juices mentioned in the Joe & the Juice menu are:\n\n1. Feel Good (Carrot, Turmeric, Ginger, Lemon, Apple, Olive Oil, Ice) - \u00a39.00 (Source: Joe & the Juice.pdf, p.0)\n2. Herb Tonic (Turmeric, Ginger, Pineapple, Black Pepper, Apple, Olive Oil, Ice) - \u00a39.00 (Source: Joe & the Juice.pdf, p.0)",
+      "refused": false,
+      "sources_used": [
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 0
+        }
+      ],
+      "retrieval_debug": [
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 0,
+          "distance": 0.9555350680056396
+        },
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 5,
+          "distance": 0.9964216859896378
+        },
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 3,
+          "distance": 1.0033053586012508
+        },
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 1,
+          "distance": 1.057123090422123
+        },
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 6,
+          "distance": 1.1163347575043523
+        }
+      ],
+      "retrieved_contexts": [
+        "HOT PICKS!\nSALAD BOWLS\nSANDWICHES\nBREAKFAST\nSNACKS & TREATS\nCOFFEE & TEA\nPROTEIN SHAKES\nSIGNATURE JUICES\nJUICES\nSHAKES\nSHOTS\nWATER\nPickup8 BERKELEY STREET [MAYFAIR]SKIP PRODUCT LIST\nThe SteakJoe's Classic Bread, Steak, Grana\u2026Padano, Pickles, Tomato, Arugula,Honey Mustard Dressing, Salt, BlackPepper\u00a39.90PREMIUM\nJOE's Overnight OatsOvernight Oats, Berry Compote,\u2026Blueberries\u00a34.70NEW\nBeets & BerriesStrawberries, Beetroot Powder,\u2026Banana, Date Puree, Collagen &Whey Protein, Sproud M*lk, Ice\u00a39.20\nFeel GoodCarrot, Turmeric, Ginger, Lemon,\u2026Apple, Olive Oil, Ice\u00a39.00NEW\nCappuccinoEspresso, Regular Milk\u00a34.30\nGreen Vegan BowlAvocado, Cucumber, Kale, Vegan\u2026Pesto, Spinach, Pickled Red Onion,Edamame, Lemon, Pumpkin Seeds,Cranberry\u00a39.50IMPROVED\nGreen Tuna BowlTuna Mousse, Cucumber, Kale,\u2026Vegan Pesto, Spinach, Pickled RedOnion, Edamame, Lemon, PumpkinSeeds, Cranberry\u00a39.50IMPROVED",
+        "Chocolate FlexRaw Cacao, Banana, Date Puree,\u2026Collagen & Whey Protein, SproudM*lk, Ice\u00a39.20\nThe NuttyAlmond Butter, Maca Powder,\u2026Banana, Date Puree, Collagen &Whey Protein, Sproud M*lk, Ice\u00a39.20CONTAINS NUTS\nUnicorn TearsAlmond Butter, Blue Spirulina,\u2026Cinnamon, Banana, Date Puree,Collagen & Whey Protein, SproudM*lk, Ice\u00a39.20CONTAINS NUTS\nHydration StationVita Coco Coconut Water, Lemon,\u2026Spinach, Ginger, Apple, Olive Oil,Ice\u00a39.00NEW\nFeel GoodCarrot, Turmeric, Ginger, Lemon,\u2026Apple, Olive Oil, Ice\u00a39.00NEW\nJOEs Green MileSpinach, Kiwi, Avocado, Lemon,\u2026Apple, Ice\u00a39.00IMPROVED\nGreen ShieldKale, Ginger, Cucumber, Spinach,\u2026Apple, Olive Oil, Ice\u00a39.00IMPROVED\nJOEs IdentityKale, Celery, Spinach, Lemon,\u2026Cucumber, Olive Oil, Ice\u00a39.00ALLERGEN UPDATE\nHerb TonicTurmeric, Ginger, Pineapple, Carr\u2026Black Pepper, Apple, Olive Oil, Ice\u00a39.00IMPROVED\nGo Away DOCCarrot, Ginger, Apple, Olive Oil, Ice\u00a37.10",
+        "Raw Blueberry & Rasp\u2026Raw Blueberry & Raspberry Square\u00a33.10CONTAINS NUTS\nRaw Passionfruit & Ra\u2026Raw Passionfruit & Raspberry\u2026Square\u00a33.10CONTAINS NUTS\nRaw Coconut SquareRaw Coconut Square\u00a33.10CONTAINS NUTS\nRaw Hazelnut SquareRaw Hazelnut Square\u00a33.10CONTAINS NUTS\nChocolate BrownieChocolate Brownie\u00a33.00\nJOE's Protein BarJOE's Protein Bar\u00a32.50\nIced Blueberry LatteEspresso, Blueberry Concentrate,\u2026Regular Milk, Ice\u00a35.00LIMITED\nIced Lavender LatteEspresso, Lavender Concentrate,\u2026Regular Milk, Ice\u00a35.00LIMITED\nIced Blueberry Match\u2026Matcha, Blueberry Concentrate, O\u2026Drink, Ice\u00a35.20LIMITED\nIced Lavender Matcha\u2026Matcha, Lavender Concentrate, O\u2026Drink, Ice\u00a35.20LIMITED\nLatte 16ozRegular Milk, Espresso\u00a34.70\nLatte 12ozRegular Milk, Espresso\u00a34.30POPULAR\nFlat WhiteRegular Milk, Espresso\u00a33.80\nEspresso MacchiatoRegular Milk, Espresso\u00a33.40\nAmericanoEspresso, Hot Water\u00a33.40\nEspressoEspresso\u00a33.00",
+        "Green Tuna BowlTuna Mousse, Cucumber, Kale,\u2026Vegan Pesto, Spinach, Pickled RedOnion, Edamame, Lemon, PumpkinSeeds, Cranberry\u00a39.50IMPROVED\nThe SteakJoe's Classic Bread, Steak, Grana\u2026Padano, Pickles, Tomato, Arugula,Honey Mustard Dressing, Salt, BlackPepper\u00a39.90PREMIUM\nJOEs ClubJoe's Classic Bread, Vegan Pesto,\u2026Avocado, Chicken, Tomato\u00a38.00POPULAR\nAvocadoVegan Pesto, Joe's Classic Bread,\u2026Avocado, Mozzarella, Tomato\u00a37.25\nTunacadoJoe's Classic Bread, Avocado,\u2026Tomato, Tuna Mousse, Vegan Pesto\u00a38.00\nSpicy TunaJoe's Classic Bread, Tomato,\u2026Jalapenos, Tabasco, Vegan Pesto,Tuna Mousse\u00a38.00POPULAR\nSerranoJoe's Classic Bread, Avocado,\u2026Mozzarella, Tomato, Vegan Pesto,Serrano ham\u00a38.00\nTurkeyVegan Pesto, Joe's Classic Bread,\u2026Turkey, Mozzarella, Tomato\u00a38.00\nVAVO (Vegan Avocado)Joe's Classic Bread, Vegan Pesto,\u2026Avocado, Spinach, Tomato\u00a38.00",
+        "Herb TonicTurmeric, Ginger, Pineapple, Carr\u2026Black Pepper, Apple, Olive Oil, Ice\u00a39.00IMPROVED\nGo Away DOCCarrot, Ginger, Apple, Olive Oil, Ice\u00a37.10\nPrince of GreenPineapple, Lemon, Cucumber, Oliv\u2026Oil, Ice\u00a37.10\nGreen TonicKale, Celery, Cucumber, Olive Oil,\u2026Ice\u00a37.10\nSports JuiceApple, Ice, Olive Oil, Pineapple,\u2026Passion Fruit\u00a37.10\nIron ManApple, Strawberries, Kiwi, Ice, Oliv\u2026Oil\u00a37.10\nPick Me UpStrawberries, Apple, Ice, Olive Oil,\u2026Banana\u00a37.10POPULAR\nHell Of A NerveElderflower, Olive Oil, Strawberries\u2026Banana, Ice\u00a37.10\nStress DownApple, Strawberries, Ginger, Ice,\u2026Olive Oil\u00a37.10\nPower ShakeVanilla Milk, Ice, Strawberries,\u2026Banana\u00a37.10POPULAR\nAvo ShakeVanilla Milk, Ice, Avocado, Banana\u00a37.10\nCoffee ShakeCoffee Beans, Vanilla Milk,\u2026Espresso, Ice\u00a37.10\nGinger ShotApple, Ice, Ginger\u00a33.05\nTurmeric ShotBlack Pepper, Apple, Ice, Turmeric\u2026Lemon\u00a33.05\nStill Water 330 mlStill Water\u00a31.80\nSnacks & Treats"
+      ],
+      "latency_seconds": 7.963,
+      "metrics": {
+        "keyword_hit_rate": 0.5,
+        "citation_ok": true,
+        "refusal_correct": true
+      },
+      "judge": null,
+      "error": null,
+      "failed": true
+    },
+    {
+      "id": "J2",
+      "category": "answerable",
+      "question": "What ingredients are listed for the 'Feel Good' juice?",
+      "answer": "No relevant content found in your uploads for that question. Try rephrasing or upload a more specific document.\nTip: Try asking about a specific section, item name, or include a keyword from the document.",
+      "refused": true,
+      "sources_used": [
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 5
+        }
+      ],
+      "retrieval_debug": [
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 5,
+          "distance": 0.8428745859271257
+        }
+      ],
+      "retrieved_contexts": [
+        "Chocolate FlexRaw Cacao, Banana, Date Puree,\u2026Collagen & Whey Protein, SproudM*lk, Ice\u00a39.20\nThe NuttyAlmond Butter, Maca Powder,\u2026Banana, Date Puree, Collagen &Whey Protein, Sproud M*lk, Ice\u00a39.20CONTAINS NUTS\nUnicorn TearsAlmond Butter, Blue Spirulina,\u2026Cinnamon, Banana, Date Puree,Collagen & Whey Protein, SproudM*lk, Ice\u00a39.20CONTAINS NUTS\nHydration StationVita Coco Coconut Water, Lemon,\u2026Spinach, Ginger, Apple, Olive Oil,Ice\u00a39.00NEW\nFeel GoodCarrot, Turmeric, Ginger, Lemon,\u2026Apple, Olive Oil, Ice\u00a39.00NEW\nJOEs Green MileSpinach, Kiwi, Avocado, Lemon,\u2026Apple, Ice\u00a39.00IMPROVED\nGreen ShieldKale, Ginger, Cucumber, Spinach,\u2026Apple, Olive Oil, Ice\u00a39.00IMPROVED\nJOEs IdentityKale, Celery, Spinach, Lemon,\u2026Cucumber, Olive Oil, Ice\u00a39.00ALLERGEN UPDATE\nHerb TonicTurmeric, Ginger, Pineapple, Carr\u2026Black Pepper, Apple, Olive Oil, Ice\u00a39.00IMPROVED\nGo Away DOCCarrot, Ginger, Apple, Olive Oil, Ice\u00a37.10"
+      ],
+      "latency_seconds": 2.4,
+      "metrics": {
+        "keyword_hit_rate": 0.0,
+        "citation_ok": true,
+        "refusal_correct": false
+      },
+      "judge": null,
+      "error": null,
+      "failed": true
+    },
+    {
+      "id": "I1",
+      "category": "answerable",
+      "question": "Who is the Module and Course Leader for the IoT lecture?",
+      "answer": "The Module and Course Leader for the IoT lecture is Stavros Dimitriou (Source: 01 Introduction to IoT.pdf, p.0).",
+      "refused": false,
+      "sources_used": [
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 0,
+          "chunk_id": 0
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 3,
+          "chunk_id": 0
+        }
+      ],
+      "retrieval_debug": [
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 0,
+          "chunk_id": 0,
+          "distance": 0.6777268527302047
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 3,
+          "chunk_id": 0,
+          "distance": 0.8238193277417387
+        }
+      ],
+      "retrieved_contexts": [
+        "Embedded Systems and \nthe Internet of Things\nEEE_6_ESI\nInternet of Things (IoT)\nEverything is Connected\nStavros Dimitriou\nModule and Course Leader",
+        "4 School of Engineering Stavros DimitriouWelcome to the IoT\n\u2022The Introduction to the Internet of Things (IoT) session \nexplains what the IoT is, what it does, how it is part of \ndigital transformation, and how you can become part of \nthis. \n\u2022You will learn about the exponential increase of \nintelligent devices connected to the internet and you will \nlearn to program one of these intelligent devices. \n\u2022This lecture explains artificial intelligence and the impact \nof automation to our future. Lastly you will understand \nthe increased importance of privacy and security."
+      ],
+      "latency_seconds": 2.631,
+      "metrics": {
+        "keyword_hit_rate": 1.0,
+        "citation_ok": true,
+        "refusal_correct": true
+      },
+      "judge": null,
+      "error": null,
+      "failed": false
+    },
+    {
+      "id": "I2",
+      "category": "answerable",
+      "question": "How many devices are connected on the Internet by 2023, according to the IoT lecture?",
+      "answer": "I counted 16 item lines in the retrieved menu text.\n\nNote: This count is based on the retrieved sections and may be incomplete if the PDF is partial.\nTip: For a precise count, ask per category (e.g., 'How many Sandwiches are listed?')",
+      "refused": false,
+      "sources_used": [
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 43,
+          "chunk_id": 0
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 42,
+          "chunk_id": 0
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 4,
+          "chunk_id": 0
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 49,
+          "chunk_id": 0
+        }
+      ],
+      "retrieval_debug": [
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 43,
+          "chunk_id": 0,
+          "distance": 0.7438074648128448
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 42,
+          "chunk_id": 0,
+          "distance": 0.7909357589605684
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 4,
+          "chunk_id": 0,
+          "distance": 0.8198729388050405
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 49,
+          "chunk_id": 0,
+          "distance": 0.8484289880844362
+        }
+      ],
+      "retrieved_contexts": [
+        "44 School of Engineering Stavros DimitriouWhat is the IoT?\n\u2022Researchers also estimate that in the next four years, \nthere are going to be over 30 billion connected devices \nworldwide.\n\u2022Perhaps a third of connected devices will be computers, \nsmartphones, tablets, and smart TVs.\n\u2022The remaining two -thirds will be other kinds of \u201cthings\u201d: \nsensors, actuators, and newly invented intelligent \ndevices that monitor, control, analyse, and optimize our \nworld.\n\u2022Some examples of intelligent connected sensors are: \nsmart doorbells, garage doors, thermostats, sports \nwearables, pacemakers, traffic lights, parking spots, and \nmany others.\n\u2022The limit of different objects that could become \nintelligent sensors is limited only by our imagination.",
+        "43 School of Engineering Stavros DimitriouWhat is the IoT?\n\u2022The Internet of Things (IoT) is the connection of millions \nof smart devices and sensors connected to the Internet. \n\u2022These connected devices and sensors collect and share \ndata for use and evaluation by many organizations. \n\u2022These organizations include businesses, cities, \ngovernments, hospitals and individuals. \n\u2022The IoT has been possible, in part, due to the advent of \ncheap processors and wireless networks. \n\u2022Previously inanimate objects such as doorknobs or light \nbulbs can now be equipped with an intelligent sensor \nthat can collect and transfer data to a network.\n\u2022Researchers estimate that over 3 million new devices are \nconnected to the Internet each month.",
+        "5 School of Engineering Stavros DimitriouThe Evolution of Digital Transformation\n\u20227.4 billion \u2013 people on the planet\n\u202230 billion \u2013 devices connected on the Internet by 2023\n\u20226.58 \u2013 average number of connected devices per \nconsumer in 2023\n\u202244% - children under the age of 1 use smart devices\n\u20221.4 million \u2013 number of pacemakers in use by 2023\n\u202215 million \u2013 Fitbit exercise monitors in use by 2023\n\u202220 billion \u2013 Euros to be spent on Artificial Intelligence by \nthe EU by 2027",
+        "50 School of Engineering Stavros DimitriouHow are IoT Devices Connected to the Network?"
+      ],
+      "latency_seconds": 0.5,
+      "metrics": {
+        "keyword_hit_rate": 0.0,
+        "citation_ok": true,
+        "refusal_correct": true
+      },
+      "judge": null,
+      "error": null,
+      "failed": true
+    },
+    {
+      "id": "R1",
+      "category": "should_refuse",
+      "question": "What year was Joe & the Juice founded?",
+      "answer": "I could not find this information in the uploaded PDFs.",
+      "refused": true,
+      "sources_used": [
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 0
+        }
+      ],
+      "retrieval_debug": [
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 0,
+          "distance": 1.1625145661064127
+        },
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 5,
+          "distance": 1.2274409791890244
+        },
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 3,
+          "distance": 1.2886892088618453
+        },
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 1,
+          "distance": 1.3025542682989262
+        },
+        {
+          "doc": "Joe & the Juice.pdf",
+          "page": 0,
+          "chunk_id": 2,
+          "distance": 1.403865230042119
+        }
+      ],
+      "retrieved_contexts": [
+        "HOT PICKS!\nSALAD BOWLS\nSANDWICHES\nBREAKFAST\nSNACKS & TREATS\nCOFFEE & TEA\nPROTEIN SHAKES\nSIGNATURE JUICES\nJUICES\nSHAKES\nSHOTS\nWATER\nPickup8 BERKELEY STREET [MAYFAIR]SKIP PRODUCT LIST\nThe SteakJoe's Classic Bread, Steak, Grana\u2026Padano, Pickles, Tomato, Arugula,Honey Mustard Dressing, Salt, BlackPepper\u00a39.90PREMIUM\nJOE's Overnight OatsOvernight Oats, Berry Compote,\u2026Blueberries\u00a34.70NEW\nBeets & BerriesStrawberries, Beetroot Powder,\u2026Banana, Date Puree, Collagen &Whey Protein, Sproud M*lk, Ice\u00a39.20\nFeel GoodCarrot, Turmeric, Ginger, Lemon,\u2026Apple, Olive Oil, Ice\u00a39.00NEW\nCappuccinoEspresso, Regular Milk\u00a34.30\nGreen Vegan BowlAvocado, Cucumber, Kale, Vegan\u2026Pesto, Spinach, Pickled Red Onion,Edamame, Lemon, Pumpkin Seeds,Cranberry\u00a39.50IMPROVED\nGreen Tuna BowlTuna Mousse, Cucumber, Kale,\u2026Vegan Pesto, Spinach, Pickled RedOnion, Edamame, Lemon, PumpkinSeeds, Cranberry\u00a39.50IMPROVED",
+        "Chocolate FlexRaw Cacao, Banana, Date Puree,\u2026Collagen & Whey Protein, SproudM*lk, Ice\u00a39.20\nThe NuttyAlmond Butter, Maca Powder,\u2026Banana, Date Puree, Collagen &Whey Protein, Sproud M*lk, Ice\u00a39.20CONTAINS NUTS\nUnicorn TearsAlmond Butter, Blue Spirulina,\u2026Cinnamon, Banana, Date Puree,Collagen & Whey Protein, SproudM*lk, Ice\u00a39.20CONTAINS NUTS\nHydration StationVita Coco Coconut Water, Lemon,\u2026Spinach, Ginger, Apple, Olive Oil,Ice\u00a39.00NEW\nFeel GoodCarrot, Turmeric, Ginger, Lemon,\u2026Apple, Olive Oil, Ice\u00a39.00NEW\nJOEs Green MileSpinach, Kiwi, Avocado, Lemon,\u2026Apple, Ice\u00a39.00IMPROVED\nGreen ShieldKale, Ginger, Cucumber, Spinach,\u2026Apple, Olive Oil, Ice\u00a39.00IMPROVED\nJOEs IdentityKale, Celery, Spinach, Lemon,\u2026Cucumber, Olive Oil, Ice\u00a39.00ALLERGEN UPDATE\nHerb TonicTurmeric, Ginger, Pineapple, Carr\u2026Black Pepper, Apple, Olive Oil, Ice\u00a39.00IMPROVED\nGo Away DOCCarrot, Ginger, Apple, Olive Oil, Ice\u00a37.10",
+        "Raw Blueberry & Rasp\u2026Raw Blueberry & Raspberry Square\u00a33.10CONTAINS NUTS\nRaw Passionfruit & Ra\u2026Raw Passionfruit & Raspberry\u2026Square\u00a33.10CONTAINS NUTS\nRaw Coconut SquareRaw Coconut Square\u00a33.10CONTAINS NUTS\nRaw Hazelnut SquareRaw Hazelnut Square\u00a33.10CONTAINS NUTS\nChocolate BrownieChocolate Brownie\u00a33.00\nJOE's Protein BarJOE's Protein Bar\u00a32.50\nIced Blueberry LatteEspresso, Blueberry Concentrate,\u2026Regular Milk, Ice\u00a35.00LIMITED\nIced Lavender LatteEspresso, Lavender Concentrate,\u2026Regular Milk, Ice\u00a35.00LIMITED\nIced Blueberry Match\u2026Matcha, Blueberry Concentrate, O\u2026Drink, Ice\u00a35.20LIMITED\nIced Lavender Matcha\u2026Matcha, Lavender Concentrate, O\u2026Drink, Ice\u00a35.20LIMITED\nLatte 16ozRegular Milk, Espresso\u00a34.70\nLatte 12ozRegular Milk, Espresso\u00a34.30POPULAR\nFlat WhiteRegular Milk, Espresso\u00a33.80\nEspresso MacchiatoRegular Milk, Espresso\u00a33.40\nAmericanoEspresso, Hot Water\u00a33.40\nEspressoEspresso\u00a33.00",
+        "Green Tuna BowlTuna Mousse, Cucumber, Kale,\u2026Vegan Pesto, Spinach, Pickled RedOnion, Edamame, Lemon, PumpkinSeeds, Cranberry\u00a39.50IMPROVED\nThe SteakJoe's Classic Bread, Steak, Grana\u2026Padano, Pickles, Tomato, Arugula,Honey Mustard Dressing, Salt, BlackPepper\u00a39.90PREMIUM\nJOEs ClubJoe's Classic Bread, Vegan Pesto,\u2026Avocado, Chicken, Tomato\u00a38.00POPULAR\nAvocadoVegan Pesto, Joe's Classic Bread,\u2026Avocado, Mozzarella, Tomato\u00a37.25\nTunacadoJoe's Classic Bread, Avocado,\u2026Tomato, Tuna Mousse, Vegan Pesto\u00a38.00\nSpicy TunaJoe's Classic Bread, Tomato,\u2026Jalapenos, Tabasco, Vegan Pesto,Tuna Mousse\u00a38.00POPULAR\nSerranoJoe's Classic Bread, Avocado,\u2026Mozzarella, Tomato, Vegan Pesto,Serrano ham\u00a38.00\nTurkeyVegan Pesto, Joe's Classic Bread,\u2026Turkey, Mozzarella, Tomato\u00a38.00\nVAVO (Vegan Avocado)Joe's Classic Bread, Vegan Pesto,\u2026Avocado, Spinach, Tomato\u00a38.00",
+        "VAVO (Vegan Avocado)Joe's Classic Bread, Vegan Pesto,\u2026Avocado, Spinach, Tomato\u00a38.00\nYoghurt BowlGreek Style Yoghurt, Berry\u2026Compote, Blueberries, Granola\u00a34.90CONTAINS NUTS\nJOE's Overnight OatsOvernight Oats, Berry Compote,\u2026Blueberries\u00a34.70NEW\nAcai BowlAcai, Granola, Banana, Almond\u2026Butter\u00a38.85CONTAINS NUTS\nEggcadoBreakfast Bread, Egg Salad,\u2026Tomato, Avocado, Spinach,Sriracha\u00a38.00\nButter CroissantButter Croissant\u00a33.00\nPain au ChocolatPain au Chocolat\u00a33.50NEW\nAlmond CroissantAlmond Croissant\u00a33.50CONTAINS NUTS\nCarrot CakeCarrot Cake\u00a33.00\nBlueberry MuffinBlueberry Muffin\u00a33.00\nChoco MuffinChocolate Muffin\u00a33.00\nBanana BreadBanana bread\u00a33.00CONTAINS NUTS\nRaw Caramel & Choco\u2026Raw Caramel & Chocolate Bar\u00a33.10CONTAINS NUTS\nRaw Blueberry & Rasp\u2026Raw Blueberry & Raspberry Square\u00a33.10CONTAINS NUTS\nRaw Passionfruit & Ra\u2026Raw Passionfruit & Raspberry\u2026Square\u00a33.10CONTAINS NUTS"
+      ],
+      "latency_seconds": 2.746,
+      "metrics": {
+        "keyword_hit_rate": 0.0,
+        "citation_ok": true,
+        "refusal_correct": true
+      },
+      "judge": null,
+      "error": null,
+      "failed": []
+    },
+    {
+      "id": "R2",
+      "category": "should_refuse",
+      "question": "What is the capital of France?",
+      "answer": "I could not find this information in the uploaded PDFs.",
+      "refused": true,
+      "sources_used": [
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 41,
+          "chunk_id": 0
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 18,
+          "chunk_id": 0
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 40,
+          "chunk_id": 0
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 23,
+          "chunk_id": 0
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 39,
+          "chunk_id": 0
+        }
+      ],
+      "retrieval_debug": [
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 41,
+          "chunk_id": 0,
+          "distance": 1.7610256546016503
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 18,
+          "chunk_id": 0,
+          "distance": 1.7860897273059488
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 40,
+          "chunk_id": 0,
+          "distance": 1.7879651561140606
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 23,
+          "chunk_id": 0,
+          "distance": 1.7960151605703791
+        },
+        {
+          "doc": "01 Introduction to IoT.pdf",
+          "page": 39,
+          "chunk_id": 0,
+          "distance": 1.8032564758691747
+        }
+      ],
+      "retrieved_contexts": [
+        "42 School of Engineering Stavros DimitriouExercises\nWhat is the acronym for a small business network that might \nconnect 3 PCs and 4 wireless devices?\nA.LAN\nB.PAN\nC.Fog\nD.WAN\nE.Wireless",
+        "19 School of Engineering Stavros DimitriouCan Smart Devices Think?\nCorporate offices can be occupied by \nthousands of employees.  Keeping the \nenvironment, such as lighting, heat, \nhumidity, in the building within \nacceptable parameters helps to keep \nemployees happy and therefore more \nproductive.\nFollow the link below to view a video about an Ideal Building:\nhttps://cisco -netacad.wistia.com/medias/k7s8f8c9cj",
+        "41 School of Engineering Stavros DimitriouExercises\nWhat type of networks use electromagnetic waves instead of \nwires?\nA.wireless\nB.Cloud\nC.Ethernet\nD.internet\nWhat is the name of a collection of servers and data centers  \nwithin the Internet that is used to store and access data \nanywhere, anytime, and on any device?\nA.PAN\nB.internet \nC.WAN\nD.cloud",
+        "24 School of Engineering Stavros DimitriouNetworking is the Foundation\n\u2022Enabling these connections are the networks that we \nuse daily. These networks provide the foundation for the \nInternet and the digitized world.\n\u2022The methods that we use to communicate continue to \nevolve. Whereas we were once limited by cables and \nplugs, breakthroughs in wireless and digital technology \nhave significantly extended the reach of our \ncommunications.\n\u2022Networks form the foundation of the digitized world. \nNetworks come in all sizes. They can range from simple \nnetworks consisting of two computers to networks \nconnecting millions of devices.",
+        "40 School of Engineering Stavros DimitriouExercises\nWhat is described as the network of networks and is the \nlargest network in the world?\nA.internet\nB.cloud\nC.PAN\nD.LAN\nWhat technology allows wireless devices to connect to \nother devices within a distance of a person's arm?\nA.Bluetooth\nB.Fog computing\nC.cellular\nD.WiFi"
+      ],
+      "latency_seconds": 2.46,
+      "metrics": {
+        "keyword_hit_rate": 0.0,
+        "citation_ok": true,
+        "refusal_correct": true
+      },
+      "judge": null,
+      "error": null,
+      "failed": []
+    }
+  ]
+}
