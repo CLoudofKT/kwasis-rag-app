@@ -4,8 +4,8 @@ import hashlib
 from pathlib import Path
 from typing import List, Tuple
 
-from langchain.schema import Document
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 
 from .config import CFG, ensure_dirs

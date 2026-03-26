@@ -4,7 +4,7 @@ import re
 from typing import Dict, List, Tuple, Optional, Union
 
 from langchain_openai import ChatOpenAI
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 from .config import CFG, assert_api_key
 from .prompts import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE

@@ -4,7 +4,7 @@ from typing import List, Optional, Tuple
 
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 from .config import CFG, assert_api_key, ensure_dirs
 
