@@ -7,3 +7,4 @@ chromadb==0.5.5
 tiktoken==0.7.0
 python-dotenv==1.0.1
 pydantic==2.8.2
+pillow==10.4.0
