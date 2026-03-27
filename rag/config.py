@@ -55,9 +55,26 @@ def ensure_dirs() -> None:
 
 
 def assert_api_key() -> None:
-    if not CFG.OPENAI_API_KEY:
+    key = CFG.OPENAI_API_KEY
+    # On Streamlit Cloud, secrets may not be injected as env vars yet — try st.secrets fallback.
+    if not key:
+        try:
+            import streamlit as st
+            key = st.secrets.get("OPENAI_API_KEY")
+            if key:
+                os.environ["OPENAI_API_KEY"] = key
+        except Exception:
+            pass
+    if not key:
         raise RuntimeError(
-            "OPENAI_API_KEY is missing. Add it to your .env file as:\n"
-            "OPENAI_API_KEY=sk-...\n"
+            "OPENAI_API_KEY is not set.\n"
+            "• Streamlit Cloud: go to App Settings → Secrets and add:\n"
+            '  OPENAI_API_KEY = "sk-..."\n'
+            "• Locally: add OPENAI_API_KEY=sk-... to your .env file."
+        )
+    if not str(key).startswith("sk-"):
+        raise RuntimeError(
+            "OPENAI_API_KEY looks invalid (expected a key starting with 'sk-'). "
+            "Please check your Streamlit Secrets or .env file and replace it with a valid key."
         )
     

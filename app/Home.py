@@ -17,7 +17,11 @@ st.set_page_config(
 
 # ✅ Ensure folders exist + API key exists
 ensure_dirs()
-assert_api_key()
+try:
+    assert_api_key()
+except RuntimeError as e:
+    st.error(f"**OpenAI API Key Error:** {e}")
+    st.stop()
 
 st.title("Kwasi’s Retrieval-Augmented Generation (RAG) App")
 st.caption("Ask questions over your uploaded documents using Retrieval-Augmented Generation (RAG).")
