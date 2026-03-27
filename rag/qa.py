@@ -58,7 +58,15 @@ def _question_keywords(question: str) -> List[str]:
 
 def _classify_intent(question: str) -> str:
     q = (question or "").lower().strip()
-    if re.search(r"\bhow many\b|\bnumber of\b|\bcount\b|\btotal\b", q):
+    # Only treat as "count" when asking about items/entries IN a list or document,
+    # not for factual "how many" questions (scores, stats, credits, averages, etc.).
+    _count_trigger = re.search(r"\bhow many\b|\bnumber of\b|\bcount\b|\btotal\b", q)
+    _list_context = re.search(
+        r"\bitems?\b|\bproducts?\b|\bentries\b|\bentry\b|\blisted\b|\bon the menu\b"
+        r"|\boptions?\b|\bchoices?\b|\bdishes?\b|\bthings?\b on|\bin the (menu|list|document|pdf)\b",
+        q,
+    )
+    if _count_trigger and _list_context:
         return "count"
     broad_markers = [
         "what is in the pdf",
