@@ -192,6 +192,15 @@ def run_evaluation(
     answer_fn: RefAnswerFn = answer_question,
     evalset_path: Optional[Path] = None,
 ) -> Dict:
+    import openai as _openai
+    try:
+        _openai.models.list()
+    except _openai.AuthenticationError:
+        print("ERROR: OpenAI API key is invalid or missing. Cannot run evaluation.")
+        return {"error": "invalid_api_key"}
+    except Exception as e:
+        print(f"WARNING: Could not verify API key before eval: {e}")
+
     ensure_dirs()
 
     items_norm = [_normalise_item(item, i) for i, item in enumerate(eval_items)]

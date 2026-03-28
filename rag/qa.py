@@ -58,6 +58,15 @@ def _question_keywords(question: str) -> List[str]:
 
 def _classify_intent(question: str) -> str:
     q = (question or "").lower().strip()
+    _factual = re.search(
+        r"\b(point|points|rebound|rebounds|assist|assists|average|averages|"
+        r"scored|ppg|apg|rpg|win|wins|loss|losses|game|games|season|"
+        r"goal|goals|score|scores|year|years|calorie|calories|"
+        r"mile|miles|percent|percentage|degree|degrees)\b",
+        q,
+    )
+    if _factual:
+        return "specific"
     # Only treat as "count" when asking about items/entries IN a list or document,
     # not for factual "how many" questions (scores, stats, credits, averages, etc.).
     _count_trigger = re.search(r"\bhow many\b|\bnumber of\b|\bcount\b|\btotal\b", q)
@@ -692,6 +701,7 @@ def answer_question(
         system_prompt = f"{SYSTEM_PROMPT}\n\nStyle guide: {style_hint}"
 
     messages = [("system", system_prompt)]
+    # history accepted for future multi-turn support; not yet passed to LLM
     if history:
         # Keep only well-formed roles
         for m in history:

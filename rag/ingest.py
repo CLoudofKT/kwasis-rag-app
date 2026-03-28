@@ -26,7 +26,7 @@ def save_upload(file_bytes: bytes, filename: str) -> Path:
 def _splitter() -> RecursiveCharacterTextSplitter:
     return RecursiveCharacterTextSplitter(
         chunk_size=CFG.CHUNK_SIZE,
-        chunk_overlap=CFG.CHUNK_OVERLAP,
+        chunk_overlap=200,
         separators=["\n\n", "\n", " ", ""],
     )
 
