@@ -406,31 +406,31 @@ run_clicked = st.button("Run evaluation")
 
 if run_clicked:
     if chat_mode:
-        scope_key, scope_label, messages = _get_active_chat_messages()
-        if not scope_key or messages is None:
-            st.error("No active chat history found. Ask a question in Chat first.")
-            st.stop()
-
-        user_questions = [m["content"] for m in messages if m.get("role") == "user"]
-        user_questions = user_questions[-int(chat_n) :]
+        # Aggregate user questions from ALL chat tab histories (messages__* keys)
+        _all_questions_seen: dict = {}
+        for _sk, _sv in st.session_state.items():
+            if not _sk.startswith("messages__") or not isinstance(_sv, list):
+                continue
+            for _msg in _sv:
+                if _msg.get("role") == "user":
+                    _q = (_msg.get("content") or "").strip()
+                    if _q:
+                        # Overwrite on duplicate key so last occurrence (most recent) wins
+                        _all_questions_seen[_q.lower()] = _q
+        user_questions = list(_all_questions_seen.values())[-int(chat_n):]
 
         if not user_questions:
-            st.error("No user questions found in the active chat history.")
+            st.error("No chat history found. Ask a question in Chat first.")
             st.stop()
-
-        if scope_label and scope_label != "All PDFs":
-            allowed_sources = [scope_label]
-        else:
-            allowed_sources = None
 
         with st.spinner("Running chat-history evaluation..."):
             results = run_chat_history_evaluation(
                 user_questions,
-                allowed_sources=allowed_sources,
+                allowed_sources=None,
                 timeout_s=int(timeout_s),
             )
         st.session_state.chat_eval_results = {
-            "scope_label": scope_label,
+            "scope_label": "All tabs (aggregated)",
             "summary": results["summary"],
             "items": results["items"],
             "timestamp": time.strftime("%Y%m%d_%H%M%S"),
