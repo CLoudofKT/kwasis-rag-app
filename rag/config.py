@@ -29,7 +29,7 @@ class AppConfig:
 
     # IMPORTANT: distance threshold for Chroma (lower is better)
     # If too strict, it will always say "no reliable answer".
-    MAX_DISTANCE: float = float(os.getenv("MAX_DISTANCE", "0.85"))
+    MAX_DISTANCE: float = float(os.getenv("MAX_DISTANCE", "0.92"))
 
     # Confidence checks (simple heuristics)
     # If total context is tiny, treat retrieval as weak.

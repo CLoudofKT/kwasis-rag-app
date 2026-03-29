@@ -444,6 +444,8 @@ def answer_question(
         effective_k = max(effective_k, CFG.TOP_K * 4)
     elif intent == "count":
         effective_k = max(effective_k, CFG.TOP_K * 6)
+    else:
+        effective_k = max(effective_k, CFG.TOP_K * 2)
 
     pairs = similarity_search_with_score(
         query=question,
