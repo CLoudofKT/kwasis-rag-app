@@ -447,11 +447,41 @@ def answer_question(
     else:
         effective_k = max(effective_k, CFG.TOP_K * 2)
 
-    pairs = similarity_search_with_score(
+    # Primary search
+    pairs_a = similarity_search_with_score(
         query=question,
         k=effective_k,
         sources=allowed_sources,
     )
+
+    # Secondary search using stat-friendly reformulation
+    import re as _re
+    _stat_terms = _re.findall(
+        r'\b(points?|rebounds?|assists?|steals?|blocks?|average|averages?|'
+        r'ppg|apg|rpg|scored|shooting|percentage|efficiency|minutes?)\b',
+        question.lower()
+    )
+    if _stat_terms:
+        # Build a reformulated query using table-style phrasing
+        _player = _re.sub(
+            r'\b(how many|did|average|averages?|this season|per game|in \d{4}[-–]\d{2,4})\b',
+            '', question.lower()
+        ).strip()
+        _reformulated = f"{' '.join(_stat_terms)} per game {_player}".strip()
+        pairs_b = similarity_search_with_score(
+            query=_reformulated,
+            k=effective_k,
+            sources=allowed_sources,
+        )
+        # Merge: deduplicate by chunk id, keep lowest (best) distance
+        _seen = {id(d): (d, s) for d, s in pairs_a}
+        for d, s in pairs_b:
+            key = id(d)
+            if key not in _seen or s < _seen[key][1]:
+                _seen[key] = (d, s)
+        pairs = list(_seen.values())
+    else:
+        pairs = pairs_a
 
     # If retrieval returns nothing, it usually means:
     # - vectorstore empty OR
