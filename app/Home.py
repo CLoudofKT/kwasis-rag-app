@@ -8,7 +8,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import streamlit as st
-from rag.config import ensure_dirs, assert_api_key
+from rag.config import CFG, ensure_dirs, assert_api_key
 
 st.set_page_config(
     page_title="Kwasi's RAG App",
@@ -22,6 +22,33 @@ try:
 except RuntimeError as e:
     st.error(f"**OpenAI API Key Error:** {e}")
     st.stop()
+
+# Auto-ingest preloaded PDFs once per session if the vector store is empty
+# Place PDFs in data/preloaded/ to have them ingested automatically:
+#   - 2015-16 NBA season - Wikipedia.pdf
+#   - Joe & the Juice MENU.pdf
+#   - EEE_6_PRO_Module Guide_25-26.pdf
+if not st.session_state.get("_preloaded_checked"):
+    st.session_state["_preloaded_checked"] = True
+    try:
+        from rag.store import get_vectorstore
+        from rag.ingest import ingest_pdf
+        _vs = get_vectorstore()
+        if _vs._collection.count() == 0:
+            _preloaded_dir = CFG.DATA_DIR / "preloaded"
+            _pdfs = sorted(_preloaded_dir.glob("*.pdf")) if _preloaded_dir.exists() else []
+            if _pdfs:
+                with st.spinner("Loading documents..."):
+                    _ingested = []
+                    for _pdf_path in _pdfs:
+                        _dest = CFG.UPLOADS_DIR / _pdf_path.name
+                        if not _dest.exists():
+                            _dest.write_bytes(_pdf_path.read_bytes())
+                        _ingested.append(ingest_pdf(_pdf_path))
+                _names = ", ".join(r["file"] for r in _ingested)
+                st.success(f"Loaded {len(_ingested)} preloaded document(s): {_names}")
+    except Exception as _e:
+        st.warning(f"Auto-ingestion skipped: {_e}")
 
 st.title("Kwasi’s Retrieval-Augmented Generation (RAG) App")
 st.caption("Ask questions over your uploaded documents using Retrieval-Augmented Generation (RAG).")
