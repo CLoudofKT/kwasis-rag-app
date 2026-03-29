@@ -1,4 +1,6 @@
+import csv
 import html
+import io
 import json
 import statistics
 import time
@@ -431,6 +433,7 @@ if run_clicked:
             "scope_label": scope_label,
             "summary": results["summary"],
             "items": results["items"],
+            "timestamp": time.strftime("%Y%m%d_%H%M%S"),
         }
     else:
         path = Path(path_str)
@@ -551,6 +554,38 @@ if chat_mode:
             display_rows = sorted(display_rows, key=lambda x: (x.get("question") or "").lower())
 
         st.dataframe(display_rows, use_container_width=True)
+
+        st.subheader("Download Results")
+        _ts = results.get("timestamp", time.strftime("%Y%m%d_%H%M%S"))
+        _dl_rows = []
+        for item in results.get("items", []):
+            _dl_rows.append({
+                "question": item.get("question", ""),
+                "answer": item.get("answer", ""),
+                "refused": item.get("refused"),
+                "latency_seconds": item.get("latency_seconds"),
+                "citation_ok": item.get("citation_ok"),
+                "slow_flag": (item.get("latency_seconds") or 0.0) >= slow_threshold,
+                "timestamp": _ts,
+            })
+        _json_bytes = json.dumps(_dl_rows, indent=2).encode("utf-8")
+        st.download_button(
+            "Download JSON",
+            data=_json_bytes,
+            file_name=f"chat_diagnostics_{_ts}.json",
+            mime="application/json",
+        )
+        _csv_buf = io.StringIO()
+        if _dl_rows:
+            _writer = csv.DictWriter(_csv_buf, fieldnames=list(_dl_rows[0].keys()))
+            _writer.writeheader()
+            _writer.writerows(_dl_rows)
+        st.download_button(
+            "Download CSV",
+            data=_csv_buf.getvalue().encode("utf-8"),
+            file_name=f"chat_diagnostics_{_ts}.csv",
+            mime="text/csv",
+        )
 
         st.subheader("Promote to Evalset")
         st.caption("Add any of these questions to your labelled evalset.json.")
