@@ -447,41 +447,47 @@ def answer_question(
     else:
         effective_k = max(effective_k, CFG.TOP_K * 2)
 
-    # Primary search
-    pairs_a = similarity_search_with_score(
-        query=question,
-        k=effective_k,
-        sources=allowed_sources,
-    )
-
-    # Secondary search using stat-friendly reformulation
     import re as _re
     _stat_terms = _re.findall(
-        r'\b(points?|rebounds?|assists?|steals?|blocks?|average|averages?|'
-        r'ppg|apg|rpg|scored|shooting|percentage|efficiency|minutes?)\b',
+        r'\b(points?|rebounds?|assists?|steals?|blocks?|averages?|'
+        r'ppg|apg|rpg|efficiency|minutes?|percentage)\b',
         question.lower()
     )
+
     if _stat_terms:
-        # Build a reformulated query using table-style phrasing
-        _player = _re.sub(
-            r'\b(how many|did|average|averages?|this season|per game|in \d{4}[-–]\d{2,4})\b',
+        # For stat queries, also search with table-style phrasing
+        _stripped = _re.sub(
+            r'\b(how many|did|does|this season|that season|in \d{4})\b',
             '', question.lower()
         ).strip()
-        _reformulated = f"{' '.join(_stat_terms)} per game {_player}".strip()
-        pairs_b = similarity_search_with_score(
+        _reformulated = f"{' '.join(_stat_terms)} per game {_stripped}".strip()
+        pairs_primary = similarity_search_with_score(
+            query=question,
+            k=effective_k,
+            sources=allowed_sources,
+        )
+        pairs_secondary = similarity_search_with_score(
             query=_reformulated,
             k=effective_k,
             sources=allowed_sources,
         )
-        # Merge: deduplicate by chunk id, keep lowest (best) distance
-        _seen = {id(d): (d, s) for d, s in pairs_a}
-        for d, s in pairs_b:
-            key = id(d)
-            if key not in _seen or s < _seen[key][1]:
-                _seen[key] = (d, s)
+        # Safe dedup by chunk metadata, keeping best score per unique chunk
+        _seen: dict = {}
+        for d, s in pairs_primary + pairs_secondary:
+            _key = (
+                d.metadata.get("source", ""),
+                d.metadata.get("page", ""),
+                d.metadata.get("chunk", ""),
+            )
+            if _key not in _seen or s < _seen[_key][1]:
+                _seen[_key] = (d, s)
         pairs = list(_seen.values())
     else:
-        pairs = pairs_a
+        pairs = similarity_search_with_score(
+            query=question,
+            k=effective_k,
+            sources=allowed_sources,
+        )
 
     # If retrieval returns nothing, it usually means:
     # - vectorstore empty OR
