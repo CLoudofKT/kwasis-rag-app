@@ -4,7 +4,7 @@ from pathlib import Path
 
 from rag.config import CFG, ensure_dirs
 from rag.ingest import save_upload, ingest_pdf, delete_pdf_from_memory
-from rag.store import clear_vectorstore
+from rag.store import clear_vectorstore, get_vectorstore
 
 # --- Page header ---
 st.title("1) Upload PDFs")
@@ -22,7 +22,21 @@ uploads = st.file_uploader(
 )
 
 if uploads:
+    # Query vectorstore once to get the set of already-indexed filenames
+    _indexed_sources: set = set()
+    try:
+        _vs = get_vectorstore()
+        _meta_result = _vs._collection.get(include=["metadatas"])
+        for _m in (_meta_result.get("metadatas") or []):
+            if _m and _m.get("source"):
+                _indexed_sources.add(_m["source"].strip().lower())
+    except Exception:
+        pass  # If query fails, skip duplicate check and proceed normally
+
     for f in uploads:
+        if f.name.strip().lower() in _indexed_sources:
+            st.warning(f"⚠️ '{f.name}' has already been indexed. Duplicate upload skipped.")
+            continue
         progress = st.progress(0, text=f"Uploading {f.name}...")
         t0 = time.perf_counter()
         saved_path = save_upload(f.getvalue(), f.name)
